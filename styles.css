@@ -68,7 +68,6 @@ header .nav-links a:hover {
     transform: scale(1.1); /* Aumenta o tamanho do texto ao passar o mouse */
 }
 
-
 /* Botão Contato */
 .contact-button {
     background: var(--cor-principal);
@@ -136,8 +135,6 @@ header .nav-links a:hover {
     background: var(--cor-botao-hover);
     transform: scale(1.05);
 }
-
-
 
 /* Seções de Conteúdo */
 .content-section {
@@ -267,6 +264,9 @@ header .nav-links a:hover {
     .product-info p {
         font-size: 0.9rem;
     }
+    .benefit-item {
+        width: calc(50% - 20px);
+    }
 }
 
 /* Seção Galeria */
@@ -332,144 +332,51 @@ header .nav-links a:hover {
 }
 
 /* Estilo para a seção de contato */
-#contato .section-content {
+#contato {
+    background-color: var(--cor-secundaria);
+    color: var(--cor-texto);
+    padding: 60px 0;
+}
+
+#contato h2 {
     text-align: center;
+    font-size: 36px;
+    margin-bottom: 20px;
 }
 
-#contato .whatsapp-contact {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 10px 20px; 
-    background-color: var(--cor-principal);
-    color: var(--cor-secundaria); 
-    text-decoration: none; 
-    font-size: 16px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease; 
-}
-
-#contato .whatsapp-contact:hover {
-    background-color: var(--cor-botao-hover); 
+#contato p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 40px;
 }
 
 /* Rodapé */
 footer {
-    background: var(--cor-rodape);
+    background-color: var(--cor-rodape);
     color: var(--cor-secundaria);
+    text-align: center;
     padding: 20px;
-    text-align: center;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
-footer a {
-    color: var(--cor-secundaria);
-    text-decoration: none;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
-
-/* Estilos Específicos do Padrasto - Ozoneline */
-.ozoneline .product-image {
-    background-image: url('path/to/product-image.jpg'); /* Substitua pelo caminho real */
-}
-
-/* Estilos Específicos do Padrasto - Reformas de Carros */
-.showroom-header {
-    background: url('img/bennys-background.jpg') no-repeat center center/cover;
-    color: #fff;
-    padding: 50px 0;
-    text-align: center;
-}
-
-.showroom-header h1 {
-    font-size: 48px;
-    color: #fff;
-    margin-bottom: 20px;
-}
-
-.showroom-header p {
-    font-size: 24px;
-    color: #fff;
-}
-
-/* Outros estilos para a seção de estoque */
-.stock-section {
-    background: var(--cor-fundo);
-    padding: 60px 0;
-}
-
-.stock-section .product-item {
-    background: #fff;
-    border-radius: 10px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.stock-section .product-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
-.stock-section .product-item img {
-    max-width: 100%;
-    border-radius: 10px;
-}
-
-.stock-section .product-item h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: var(--cor-texto);
-}
-
-.stock-section .product-item p {
+footer p {
+    margin: 0;
     font-size: 16px;
-    color: #666;
 }
 
-.stock-section .product-item a {
+/* Ajustes adicionais */
+a {
     color: var(--cor-principal);
     text-decoration: none;
 }
 
-.stock-section .product-item a:hover {
+a:hover {
     text-decoration: underline;
 }
 
-/* Ajuste de Responsividade */
-@media (max-width: 768px) {
-    .stock-section .product-item {
-        width: 100%;
-    }
-}
-
-
-/* Estilo para a seção de contato */
-#contato .section-content {
-    text-align: center;
-}
-
-#contato .whatsapp-contact {
-    display: inline-flex;
-    align-items: center;
-    margin-top: 20px;
-    padding: 10px 20px; 
-    background-color: var(--cor-principal);
-    color: var(--cor-secundaria); 
-    text-decoration: none; 
-    font-size: 16px;
-    border-radius: 25px;
-    transition: background-color 0.3s ease; 
-}
-
-#contato .whatsapp-contact i {
-    margin-right: 8px;
-    font-size: 18px; /* Ajusta o tamanho do ícone */
-}
-
-#contato .whatsapp-contact:hover {
-    background-color: var(--cor-botao-hover); /* Cor de fundo ao passar o mouse */ 
+/* Transição suave para todas as propriedades */
+*, *::before, *::after {
+    transition: all 0.3s ease;
 }
