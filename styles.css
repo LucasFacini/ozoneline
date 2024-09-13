@@ -51,7 +51,7 @@ header .nav-links {
 }
 
 header .nav-links li {
-    margin: 0 20px;
+    margin: 0 30px; /* Espaçamento maior entre os itens no desktop */
 }
 
 header .nav-links a {
@@ -64,9 +64,28 @@ header .nav-links a {
 }
 
 header .nav-links a:hover {
-    color: #00bfff; /* Cor do texto ao passar o mouse (mais clara) */
-    transform: scale(1.1); /* Aumenta o tamanho do texto ao passar o mouse */
+    color: #00bfff;
+    transform: scale(1.1);
 }
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+    header .nav-links {
+        flex-direction: row; /* Mantém os botões lado a lado */
+        padding: 10px;
+        flex-wrap: nowrap; /* Impede que os itens quebrem para a linha seguinte */
+    }
+
+    header .nav-links li {
+        margin: 0 10px; /* Espaçamento reduzido entre os itens em dispositivos móveis */
+    }
+
+    header .nav-links a {
+        font-size: 16px;
+    }
+}
+
+
 
 /* Botão Contato */
 .contact-button {
@@ -156,64 +175,222 @@ header .nav-links a:hover {
     font-size: 18px;
 }
 
-/* Seção de Benefícios */
+/* Estilo para a seção de benefícios */
 #beneficios {
-    background-color: var(--cor-fundo);
+    padding: 50px 0;
+    position: relative; /* Necessário para posicionar o indicador de rolagem */
 }
 
+/* Contêiner da lista de benefícios */
 .benefits-list {
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory; /* Adiciona efeito de snap na rolagem */
+    -webkit-overflow-scrolling: touch; /* Suporte para rolagem suave no iOS */
 }
 
+/* Estilo dos itens de benefício */
 .benefit-item {
+    flex: 0 0 auto; /* Impede o item de encolher e permite rolagem horizontal */
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin: 10px;
-    width: calc(33% - 40px);
     text-align: center;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 300px; /* Ajuste o tamanho mínimo conforme necessário */
+    scroll-snap-align: start; /* Alinha o item ao início durante a rolagem */
+    transition: transform 0.3s;
 }
 
+/* Efeito de hover */
 .benefit-item:hover {
     transform: translateY(-10px);
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
 }
 
+/* Estilo dos ícones */
 .benefit-icon {
-    font-size: 3em;
-    color: var(--cor-principal);
+    font-size: 3rem;
+    color: #1180c4; /* Mantém a cor azul dos ícones */
     margin-bottom: 15px;
 }
 
 .benefit-item h3 {
-    font-size: 1.5em;
-    color: var(--cor-texto);
-    margin-bottom: 10px;
+    margin: 10px 0;
+    font-size: 1.2rem;
 }
 
 .benefit-item p {
-    color: #666;
-    font-size: 1em;
-    line-height: 1.6;
+    font-size: 0.9rem;
+    color: #555;
 }
 
+/* Indicador de rolagem */
+.scroll-indicator {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 24px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+
+/* Adiciona a seta */
+.scroll-indicator:before {
+    content: '\f078'; /* Código da seta para a direita, usando Font Awesome */
+    font-family: 'Font Awesome 5 Free'; /* Certifique-se de incluir Font Awesome */
+    font-weight: 900;
+}
+
+/* Adiciona sombra ou gradiente na extremidade direita */
+.benefits-list::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
+    pointer-events: none;
+}
+
+/* Adiciona sombra ou gradiente na extremidade esquerda */
+.benefits-list::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 100%);
+    pointer-events: none;
+}
+
+/* Remove o estilo de rolagem horizontal no desktop, se desejado */
+@media (min-width: 769px) {
+    .benefits-list {
+        overflow-x: visible;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    /* Remove o indicador de rolagem no desktop */
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+
+/* Estilo geral para o container da seção */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Seção Benefícios */
+#beneficios {
+    padding: 50px 0;
+    position: relative;
+}
+
+.benefits-list {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 0;
+    margin: 0;
+    align-items: stretch; /* Garante que todos os itens tenham a mesma altura */
+}
+
+.benefit-item {
+    flex: 0 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    min-width: 300px; /* Ajuste o tamanho mínimo conforme necessário */
+    scroll-snap-align: start;
+    transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    /* Adiciona um limite para a largura máxima do item */
+    max-width: 300px;
+}
+
+/* Adiciona quebra de linha no texto do parágrafo se necessário */
+.benefit-item p {
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.5; /* Melhora a legibilidade do texto */
+    overflow-wrap: break-word; /* Garante que o texto longo quebre e não estenda o layout */
+}
+
+/* Indicador de rolagem */
+.scroll-indicator {
+    display: none; 
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+    .scroll-indicator {
+        display: block;
+    }
+}
+
+/* Remove rolagem horizontal no desktop */
+@media (min-width: 769px) {
+    .benefits-list {
+        overflow-x: visible;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+}
+
+
 /* Seção Produtos */
+#produtos {
+    padding: 50px 0;
+}
+
 .products-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    overflow-x: auto;
     gap: 30px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
 
 .product-card {
+    flex: 0 0 auto;
+    width: 300px;
     background: #fff;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    text-align: center;
 }
 
 .product-card:hover {
@@ -221,20 +398,18 @@ header .nav-links a:hover {
 }
 
 .product-image {
-    height: 300px;
+    height: 200px;
     background-size: cover;
     background-position: center;
 }
 
 .product-info {
     padding: 20px;
-    text-align: center;
 }
 
 .product-info h3 {
     margin-bottom: 10px;
     font-size: 24px;
-    color: var(--cor-texto);
 }
 
 .product-info p {
@@ -245,29 +420,24 @@ header .nav-links a:hover {
 .product-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: var(--cor-botao);
-    color: var(--cor-secundaria);
+    background-color: #1180c4;
+    color: #fff;
     border-radius: 5px;
     text-decoration: none;
-    transition: background-color 0.3s ease;
 }
 
 .product-button:hover {
-    background-color: var(--cor-botao-hover);
+    background-color: #0d6efd;
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .product-info h3 {
-        font-size: 1.25rem;
-    }
-    .product-info p {
-        font-size: 0.9rem;
-    }
-    .benefit-item {
-        width: calc(50% - 20px);
+@media (min-width: 769px) {
+    .products-grid {
+        overflow-x: visible;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 }
+
 
 /* Seção Galeria */
 #galeria {
@@ -333,50 +503,61 @@ header .nav-links a:hover {
 
 /* Estilo para a seção de contato */
 #contato {
-    background-color: var(--cor-secundaria);
-    color: var(--cor-texto);
-    padding: 60px 0;
-}
-
-#contato h2 {
-    text-align: center;
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-#contato p {
-    text-align: center;
-    font-size: 18px;
-    margin-bottom: 40px;
+    background-color: var(--cor-fundo);
 }
 
 /* Rodapé */
 footer {
-    background-color: var(--cor-rodape);
-    color: var(--cor-secundaria);
+    background: var(--cor-rodape);
+    color: #fff;
     text-align: center;
-    padding: 20px;
+    padding: 20px 0;
     position: relative;
-    bottom: 0;
-    width: 100%;
 }
 
-footer p {
+.footer-links {
+    list-style: none;
+    padding: 0;
     margin: 0;
-    font-size: 16px;
 }
 
-/* Ajustes adicionais */
-a {
-    color: var(--cor-principal);
+.footer-links li {
+    margin: 10px 0;
+}
+
+.footer-links a {
+    color: #fff;
     text-decoration: none;
+    font-size: 18px;
 }
 
-a:hover {
+.footer-links a:hover {
     text-decoration: underline;
 }
 
-/* Transição suave para todas as propriedades */
-*, *::before, *::after {
-    transition: all 0.3s ease;
+/* Estilização do botão Fale Conosco no WhatsApp */
+.whatsapp-contact {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--cor-principal); /* Cor principal */
+    color: var(--cor-secundaria); /* Cor do texto do botão */
+    padding: 10px 20px;
+    border-radius: 50px; /* Bordas arredondadas para um botão redondo */
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    white-space: nowrap; /* Garante que o texto não quebre em várias linhas */
 }
+
+.whatsapp-contact:hover {
+    background-color: var(--cor-botao-hover); /* Cor do botão ao passar o mouse */
+    transform: scale(1.05);
+}
+
+.whatsapp-contact i {
+    margin-right: 8px; /* Espaço entre o ícone e o texto */
+    font-size: 20px; /* Tamanho do ícone */
+}
+
