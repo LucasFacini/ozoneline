@@ -474,3 +474,24 @@ footer a:hover {
     background-color: var(--cor-botao-hover); /* Cor de fundo ao passar o mouse */
 }
 
+@media (max-width: 768px) {
+    /* Ajustes para telas pequenas */
+    .container {
+        padding: 10px;
+    }
+    .nav-bar {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Ajustes para telas muito pequenas */
+    .container {
+        padding: 5px;
+    }
+    .nav-bar {
+        font-size: 12px;
+    }
+}
+
+
