@@ -68,15 +68,6 @@ header .nav-links a:hover {
     transform: scale(1.1); /* Aumenta o tamanho do texto ao passar o mouse */
 }
 
-/* Ajuste de responsividade para o cabeçalho */
-@media (max-width: 768px) {
-    header .nav-links {
-        flex-direction: column;
-    }
-    header .nav-links li {
-        margin: 10px 0;
-    }
-}
 
 /* Botão Contato */
 .contact-button {
@@ -146,19 +137,7 @@ header .nav-links a:hover {
     transform: scale(1.05);
 }
 
-/* Ajustes de responsividade para o banner */
-@media (max-width: 768px) {
-    .banner h1 {
-        font-size: 32px;
-    }
-    .banner p {
-        font-size: 18px;
-    }
-    .banner .cta {
-        font-size: 16px;
-        padding: 10px 20px;
-    }
-}
+
 
 /* Seções de Conteúdo */
 .content-section {
@@ -225,13 +204,6 @@ header .nav-links a:hover {
     line-height: 1.6;
 }
 
-/* Ajuste de responsividade para a seção de benefícios */
-@media (max-width: 768px) {
-    .benefit-item {
-        width: calc(100% - 20px);
-    }
-}
-
 /* Seção Produtos */
 .products-grid {
     display: grid;
@@ -287,7 +259,7 @@ header .nav-links a:hover {
     background-color: var(--cor-botao-hover);
 }
 
-/* Ajustes de responsividade para a seção de produtos */
+/* Responsividade */
 @media (max-width: 768px) {
     .product-info h3 {
         font-size: 1.25rem;
@@ -321,59 +293,183 @@ header .nav-links a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Ajustes de responsividade para a galeria */
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: 1fr;
-    }
-}
-
 /* Seção Contato */
 .contact-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 20px;
+    align-items: flex-start;
+    margin-bottom: 40px;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: var(--cor-texto);
+}
+
+.contact-form input, 
+.contact-form textarea {
     width: 100%;
-    max-width: 600px;
-    padding: 15px;
+    padding: 10px;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 .contact-form button {
     padding: 10px 20px;
-    background-color: var(--cor-botao);
+    background: var(--cor-principal);
     color: var(--cor-secundaria);
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.3s ease;
 }
 
 .contact-form button:hover {
-    background-color: var(--cor-botao-hover);
+    background: var(--cor-botao-hover);
+}
+
+/* Estilo para a seção de contato */
+#contato .section-content {
+    text-align: center;
+}
+
+#contato .whatsapp-contact {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 20px; 
+    background-color: var(--cor-principal);
+    color: var(--cor-secundaria); 
+    text-decoration: none; 
+    font-size: 16px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease; 
+}
+
+#contato .whatsapp-contact:hover {
+    background-color: var(--cor-botao-hover); 
 }
 
 /* Rodapé */
 footer {
     background: var(--cor-rodape);
-    color: #fff;
-    padding: 20px 0;
+    color: var(--cor-secundaria);
+    padding: 20px;
     text-align: center;
-    font-size: 14px;
 }
 
 footer a {
-    color: #fff;
+    color: var(--cor-secundaria);
     text-decoration: none;
 }
 
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Estilos Específicos do Padrasto - Ozoneline */
+.ozoneline .product-image {
+    background-image: url('path/to/product-image.jpg'); /* Substitua pelo caminho real */
+}
+
+/* Estilos Específicos do Padrasto - Reformas de Carros */
+.showroom-header {
+    background: url('img/bennys-background.jpg') no-repeat center center/cover;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.showroom-header h1 {
+    font-size: 48px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.showroom-header p {
+    font-size: 24px;
+    color: #fff;
+}
+
+/* Outros estilos para a seção de estoque */
+.stock-section {
+    background: var(--cor-fundo);
+    padding: 60px 0;
+}
+
+.stock-section .product-item {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stock-section .product-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.stock-section .product-item img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.stock-section .product-item h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--cor-texto);
+}
+
+.stock-section .product-item p {
+    font-size: 16px;
+    color: #666;
+}
+
+.stock-section .product-item a {
+    color: var(--cor-principal);
+    text-decoration: none;
+}
+
+.stock-section .product-item a:hover {
+    text-decoration: underline;
+}
+
+/* Ajuste de Responsividade */
+@media (max-width: 768px) {
+    .stock-section .product-item {
+        width: 100%;
+    }
+}
+
+
+/* Estilo para a seção de contato */
+#contato .section-content {
+    text-align: center;
+}
+
+#contato .whatsapp-contact {
+    display: inline-flex;
+    align-items: center;
+    margin-top: 20px;
+    padding: 10px 20px; 
+    background-color: var(--cor-principal);
+    color: var(--cor-secundaria); 
+    text-decoration: none; 
+    font-size: 16px;
+    border-radius: 25px;
+    transition: background-color 0.3s ease; 
+}
+
+#contato .whatsapp-contact i {
+    margin-right: 8px;
+    font-size: 18px; /* Ajusta o tamanho do ícone */
+}
+
+#contato .whatsapp-contact:hover {
+    background-color: var(--cor-botao-hover); /* Cor de fundo ao passar o mouse */ 
 }
