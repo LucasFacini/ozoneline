@@ -311,7 +311,7 @@ header .nav-links a:hover {
     -webkit-overflow-scrolling: touch;
     padding: 0;
     margin: 0;
-    align-items: stretch; /* Garante que todos os itens tenham a mesma altura */
+    align-items: stretch;
 }
 
 .benefit-item {
@@ -321,37 +321,44 @@ header .nav-links a:hover {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     text-align: center;
-    min-width: 300px; /* Ajuste o tamanho mínimo conforme necessário */
+    min-width: 300px;
     scroll-snap-align: start;
     transition: transform 0.3s;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
-    /* Adiciona um limite para a largura máxima do item */
     max-width: 300px;
 }
 
-/* Adiciona quebra de linha no texto do parágrafo se necessário */
+
 .benefit-item p {
     font-size: 0.9rem;
     color: #555;
-    line-height: 1.5; /* Melhora a legibilidade do texto */
-    overflow-wrap: break-word; /* Garante que o texto longo quebre e não estenda o layout */
+    line-height: 1.5;
+    overflow-wrap: break-word;
 }
 
-/* Indicador de rolagem */
-.scroll-indicator {
-    display: none; 
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    background: rgba(0, 0, 0, 0.5);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 0.8rem;
+    /* Estilo para o indicador de bolinhas */
+.dots-indicator {
+    text-align: center;
+    margin-top: 20px;
 }
+
+.dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    transition: background-color 0.3s ease;
+}
+
+.dot.active {
+    background-color: #1180c4;
+}
+
 
 @media (max-width: 768px) {
     .scroll-indicator {
@@ -359,7 +366,7 @@ header .nav-links a:hover {
     }
 }
 
-/* Remove rolagem horizontal no desktop */
+
 @media (min-width: 769px) {
     .benefits-list {
         overflow-x: visible;
@@ -438,6 +445,27 @@ header .nav-links a:hover {
     }
 }
 
+.products-scroll-indicator {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.products-scroll-indicator .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: #ddd;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.products-scroll-indicator .dot.active {
+    background-color: #1180c4;
+}
+
+
 
 /* Seção Galeria */
 #galeria {
@@ -463,43 +491,8 @@ header .nav-links a:hover {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Seção Contato */
-.contact-form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 40px;
-}
 
-.contact-form label {
-    margin-bottom: 5px;
-    font-size: 16px;
-    color: var(--cor-texto);
-}
 
-.contact-form input, 
-.contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.contact-form button {
-    padding: 10px 20px;
-    background: var(--cor-principal);
-    color: var(--cor-secundaria);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.contact-form button:hover {
-    background: var(--cor-botao-hover);
-}
 
 /* Estilo para a seção de contato */
 #contato {
