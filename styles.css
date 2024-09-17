@@ -155,6 +155,32 @@ header .nav-links a:hover {
     transform: scale(1.05);
 }
 
+/* Estilo para dispositivos móveis */
+@media (max-width: 768px) {
+    .banner {
+        padding: 60px 20px; /* Ajusta o padding do banner */
+        text-align: center;
+    }
+
+    .banner h1 {
+        font-size: 32px; /* Ajusta o tamanho da fonte do título */
+        margin-bottom: 15px; /* Ajusta o espaçamento abaixo do título */
+    }
+
+    .banner p {
+        font-size: 18px; /* Ajusta o tamanho da fonte do texto */
+        margin-bottom: 20px; /* Ajusta o espaçamento abaixo do texto */
+        padding: 0 10px; /* Adiciona padding horizontal para o texto */
+        line-height: 1.4; /* Melhora a legibilidade do texto */
+    }
+
+    .banner .cta {
+        font-size: 16px; /* Ajusta o tamanho da fonte do botão */
+        padding: 10px 20px; /* Ajusta o padding do botão */
+    }
+}
+
+
 /* Seções de Conteúdo */
 .content-section {
     padding: 60px 0;
@@ -223,32 +249,6 @@ header .nav-links a:hover {
 .benefit-item p {
     font-size: 0.9rem;
     color: #555;
-}
-
-/* Indicador de rolagem */
-.scroll-indicator {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    width: 24px;
-    height: 24px;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #fff;
-    font-size: 16px;
-    cursor: pointer;
-    z-index: 10;
-    transform: translateY(-50%);
-}
-
-/* Adiciona a seta */
-.scroll-indicator:before {
-    content: '\f078'; /* Código da seta para a direita, usando Font Awesome */
-    font-family: 'Font Awesome 5 Free'; /* Certifique-se de incluir Font Awesome */
-    font-weight: 900;
 }
 
 /* Adiciona sombra ou gradiente na extremidade direita */
@@ -339,27 +339,6 @@ header .nav-links a:hover {
     overflow-wrap: break-word;
 }
 
-    /* Estilo para o indicador de bolinhas */
-.dots-indicator {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin: 0 5px;
-    background-color: #ccc;
-    border-radius: 50%;
-    transition: background-color 0.3s ease;
-}
-
-.dot.active {
-    background-color: #1180c4;
-}
-
-
 @media (max-width: 768px) {
     .scroll-indicator {
         display: block;
@@ -445,51 +424,62 @@ header .nav-links a:hover {
     }
 }
 
-.products-scroll-indicator {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.products-scroll-indicator .dot {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    background-color: #ddd;
-    border-radius: 50%;
-    margin: 0 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.products-scroll-indicator .dot.active {
-    background-color: #1180c4;
-}
-
-
 
 /* Seção Galeria */
 #galeria {
     background-color: var(--cor-fundo);
+    padding: 50px 0;
+    overflow: hidden; /* Garante que o contêiner não exiba barras de rolagem desnecessárias */
 }
 
+/* Contêiner da galeria */
 .gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-    justify-content: center;
+    display: flex;
+    overflow-x: auto;
+    gap: 10px; /* Adiciona um espaço entre as imagens */
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch; /* Suporte para rolagem suave em iOS */
+    padding: 0;
+    margin: 0 auto; /* Centraliza o contêiner */
+    width: 100%; /* Garante que o contêiner ocupe toda a largura da tela */
 }
 
+/* Estilo das imagens na galeria */
 .gallery img {
-    width: 100%;
+    flex: 0 0 auto; /* Impede que as imagens se estiquem */
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100vw; /* Ajuste a largura da imagem para preencher a tela */
+    height: auto; /* Mantém a proporção da imagem */
 }
 
+/* Efeito de hover para imagens */
 .gallery img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05); /* Aumenta ligeiramente o tamanho da imagem ao passar o mouse */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Intensifica a sombra para um efeito de destaque */
 }
+
+/* Estilo para dispositivos móveis */
+@media (max-width: 768px) {
+    .gallery img {
+        width: 100vw; /* Garante que as imagens ocupem toda a largura da tela em dispositivos móveis */
+        height: auto; /* Mantém a proporção das imagens */
+    }
+}
+
+/* Estilo para dispositivos de tela maior */
+@media (min-width: 769px) {
+    .gallery {
+        justify-content: center; /* Centraliza o conteúdo da galeria */
+    }
+
+    .gallery img {
+        width: auto; /* Ajusta a largura para que as imagens não se estiquem excessivamente em telas grandes */
+        max-width: 100%; /* Garante que as imagens não excedam a largura do contêiner */
+    }
+}
+
 
 
 
